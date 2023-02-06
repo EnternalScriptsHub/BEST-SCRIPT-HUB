@@ -386,14 +386,14 @@ local Button = Scripts:CreateButton({
 local Button = Troll:CreateButton({
 	Name = "Pencil",
 	Callback = function()
-	   loadstring(game:HttpGet('https://pastebin.com/raw/fraqsGUY'))()  
+	   loadstring(game:HttpGet('https://pastebin.com/raw/xdNrcSy4'))()  
 	end,
  })
 
 local Button = Troll:CreateButton({
 	Name = "Hat Eater",
 	Callback = function()
-	    loadstring(game:HttpGet('https://pastebin.com/raw/zjHUHY7P'))()  
+	    loadstring(game:HttpGet('https://pastebin.com/raw/PnL8yHuy'))()  
 	end,
  })
 
