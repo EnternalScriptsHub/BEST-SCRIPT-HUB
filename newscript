@@ -1,0 +1,424 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/CustomFIeld/main/RayField.lua'))()
+local Window = Rayfield:CreateWindow({
+    Name = "Enternal's Universe",
+    LoadingTitle = "Enternal's Universe 💎",
+    LoadingSubtitle = "by Enternal Scripts",
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = nil, -- Create a custom folder for your hub/game
+       FileName = "Enternal Universe"
+    },
+    Discord = {
+       Enabled = true,
+       Invite = "GHrS57T2", -- The Discord invite code, do not include discord.gg/
+       RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+    },
+    KeySystem = true, -- Set this to true to use our key system
+    KeySettings = {
+       Title = "Key System | HUB",
+       Subtitle = "Key System",
+       Note = "Join the discord (discord.gg/GHrS57T2)",
+       FileName = "Enternal Script HUB",
+       SaveKey = true,
+       GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+       Key = "https://pastebin.com/raw/HXSqMR9i",
+    }
+ })
+
+ local Tab = Window:CreateTab("Main")
+ local Section = Tab:CreateSection("Main Section")
+
+ local Player = Window:CreateTab("Player")
+ local Section = Player:CreateSection("Player Section")
+
+ local Troll = Window:CreateTab("Troll")
+ local Section = Troll:CreateSection("Troll Section")
+
+ local Scripts = Window:CreateTab("Game Scripts")
+ local Section = Scripts:CreateSection("Game Section")
+
+ local Animations = Window:CreateTab("Animations")
+ local Section = Animations:CreateSection("Animations Section")
+
+ local Settings = Window:CreateTab("Settings")
+ local Section = Settings:CreateSection("Settings Section")
+
+local Credits = Window:CreateTab("Credits")
+ local Section = Credits:CreateSection("Credits Section")
+
+ -- Start Up Prompt
+Window:Prompt({
+	Title = 'Enternal Script HUB',
+	SubTitle = 'Universal',
+	Content = 'This is Enternal Scripts Universe HUB, ENJOY 😁',
+	Actions = {
+		Accept = {
+			Name = 'Okay',
+			Callback = function()
+				-- You know what a callback is...
+			end,
+		}
+	}
+})
+
+local Label = Tab:CreateLabel("For More Help You Can Join The Discord Below!")
+
+local Label = Credits:CreateLabel("Enternal Scripts is the owner of the Enternal Universal!")
+
+local Label = Credits:CreateLabel("sulfate.wtf is the creator of the rayfield layout!")
+
+ local Button = Tab:CreateButton({
+   Name = "Join The Discord",
+   Callback = function()
+      setclipboard("discord.gg/RYmWkQmr)")  
+	Rayfield:Notify({
+   Title = "Discord Link",
+   Content = "Link Has Been Copied",
+   Duration = 6.5,
+   Image = 9838874163,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+   end,
+})
+
+local Button = Animations:CreateButton({
+	Name = "Flips",
+	Callback = function()
+Rayfield:Notify({
+   Title = "Keybinds",
+   Content = "Press Z for front flip, Press X for Backflip, and Press C for INF Jump",
+   Duration = 6.5,
+   Image = 4483362458,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+	   wait()
+
+--[[ Info ]]--
+
+local ver = "2.00"
+local scriptname = "feFlip"
+
+
+--[[ Keybinds ]]--
+
+local FrontflipKey = Enum.KeyCode.Z
+local BackflipKey = Enum.KeyCode.X
+local AirjumpKey = Enum.KeyCode.C
+
+
+--[[ Dependencies ]]--
+
+local ca = game:GetService("ContextActionService")
+local zeezy = game:GetService("Players").LocalPlayer
+local h = 0.0174533
+local antigrav
+
+
+--[[ Functions ]]--
+
+function zeezyFrontflip(act,inp,obj)
+	if inp == Enum.UserInputState.Begin then
+		zeezy.Character.Humanoid:ChangeState("Jumping")
+		wait()
+		zeezy.Character.Humanoid.Sit = true
+		for i = 1,360 do 
+			delay(i/720,function()
+			zeezy.Character.Humanoid.Sit = true
+				zeezy.Character.HumanoidRootPart.CFrame = zeezy.Character.HumanoidRootPart.CFrame * CFrame.Angles(-h,0,0)
+			end)
+		end
+		wait(0.55)
+		zeezy.Character.Humanoid.Sit = false
+	end
+end
+
+function zeezyBackflip(act,inp,obj)
+	if inp == Enum.UserInputState.Begin then
+		zeezy.Character.Humanoid:ChangeState("Jumping")
+		wait()
+		zeezy.Character.Humanoid.Sit = true
+		for i = 1,360 do
+			delay(i/720,function()
+			zeezy.Character.Humanoid.Sit = true
+				zeezy.Character.HumanoidRootPart.CFrame = zeezy.Character.HumanoidRootPart.CFrame * CFrame.Angles(h,0,0)
+			end)
+		end
+		wait(0.55)
+		zeezy.Character.Humanoid.Sit = false
+	end
+end
+
+function zeezyAirjump(act,inp,obj)
+	if inp == Enum.UserInputState.Begin then
+		zeezy.Character:FindFirstChildOfClass'Humanoid':ChangeState("Seated")
+		wait()
+		zeezy.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")	
+	end
+end
+
+
+--[[ Binds ]]--
+
+ca:BindAction("zeezyFrontflip",zeezyFrontflip,false,FrontflipKey)
+ca:BindAction("zeezyBackflip",zeezyBackflip,false,BackflipKey)
+ca:BindAction("zeezyAirjump",zeezyAirjump,false,AirjumpKey)
+
+	end,
+ })
+
+local Button = Settings:CreateButton({
+	Name = "Destroy Interface",
+	Callback = function()
+	   Rayfield:Destroy()   
+	end,
+ })
+
+local Button = Player:CreateButton({
+   Name = "Korblox",
+   Callback = function()
+      loadstring(game:HttpGet("https://pastebin.com/raw/Vg1qCKrj"))()   
+   end,
+})
+
+local Button = Player:CreateButton({
+   Name = "Headless",
+   Callback = function()
+      loadstring(game:HttpGet("https://pastebin.com/raw/rHf8W1XV"))()   
+   end,
+})
+
+local Button = Player:CreateButton({
+   Name = "Click To Teleport",
+   Callback = function()
+     loadstring(game:HttpGet('https://pastebin.com/raw/3Wdmp9CD'))()
+   end,
+})
+
+local Button = Player:CreateButton({
+   Name = "ESP Player",
+   Callback = function()
+   loadstring(game:HttpGet("https://pastebin.com/raw/0vKxWzrs"))()
+   end,
+})
+
+local Button = Player:CreateButton({
+   Name = "INF Yield",
+   Callback = function()
+     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+   end,
+})
+
+
+local Slider = Player:CreateSlider({
+   Name = "Walk Speed",
+   Range = {16, 500},
+   Increment = 1,
+   Suffix = "WalkSpeed",
+   CurrentValue = 16,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(s)
+      game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+   end,
+})
+
+local Slider = Player:CreateSlider({
+   Name = "JumpPower",
+   Range = {50, 500},
+   Increment = 1,
+   Suffix = "JumpPower",
+   CurrentValue = 50,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(s)
+      game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+   end,
+})
+
+local Button = Player:CreateButton({
+   Name = "Invisible",
+   Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/iQ6i1VTS"))()
+   end,
+})
+
+
+
+local Button = Scripts:CreateButton({
+   Name = "Driving Empire",
+   Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/aerocontentdeliverynetwork/3456465f7453x447r76h86856233423645756354b/master/loader.lua"))()
+   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Da Hood",
+   Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/Scrvpter/Pluto/Lua/Loader.Lua', true))()
+   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Arsenal",
+   Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MiniNoobie/MINI-HUB-V2/main/FINALLY%20UPDATED%20MINI%20HUB",true))()
+   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "The Survival Game",
+   Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/joeengo/exploiting/main/tsg.lua", true))()
+   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Mega Mansion Tycoon",
+   Callback = function()
+		loadstring(game:HttpGet(('https://raw.githubusercontent.com/laderite/zenx/main/scripts/Mega_Mansion_Tycoon.lua'),true))()
+   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Military Tycoon",
+   Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/OopssSorry/OopssHub/main/Loader.lua"))()
+   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Car Factory",
+   Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Cxetive/OptixHub/main/loader.lua"))()
+   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Fat Simulator",
+   Callback = function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/VoxleHub/Voxle/main/FatSim'))()
+   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Car Dealership Tycoon",
+   Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/03sAlt/BlueLockSeason2/main/README.md"))()
+   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Michael's Zombies",
+   Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Bebo-Mods/BeboScripts/main/MichaelZombies.lua"))()
+   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "No Scope Arcade",
+   Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/WZnPL6jK"))()       
+end
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Heist Tycoon",
+   Callback = function()
+    while wait() do
+			game:GetService("ReplicatedStorage").Knit.Services.TycoonService.RF.PayIncome:InvokeServer(game:GetService("Players").LocalPlayer)
+	end   end
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Green Ville Dealership",
+   Callback = function()
+    getgenv().DealerAutoFarm = true
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Mstir16/legocheats/main/archive/Greenville/Roadmap%20Dealership%20Autofarm"))()   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Roblox Talent Show",
+   Callback = function()
+    	loadstring(game:HttpGet('https://raw.githubusercontent.com/78n/Amity/main/RobloxTalentShow.lua'))()
+end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Driving World",
+   Callback = function()
+    	loadstring(game:HttpGet("https://raw.githubusercontent.com/aerocontentdeliverynetwork/3456465f7453x447r76h86856233423645756354b/master/loader.lua"))()
+   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Blox Fruits",
+   Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/sinret/rbxscript.com-scripts-reuploads-/main/bf1", true))()
+	   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Murder Mystery 2",
+   Callback = function()
+		getgenv().mainKey = "nil" local a,b,c,d,e=loadstring,request or http_request or (http and http.request) or (syn and syn.request),assert,tostring,"https://api.eclipsehub.xyz/auth"c(a and b,"Executor not Supported")a(b({Url=e.."\?\107e\121\61"..d(mainKey),Headers={["User-Agent"]="Eclipse"}}).Body)()
+	   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Nuke Simulator",
+   Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/kimbenner/script/main/alphascript"))()
+	   end,
+})
+
+local Button = Troll:CreateButton({
+	Name = "Pencil",
+	Callback = function()
+	   loadstring(game:HttpGet('https://pastebin.com/raw/fraqsGUY'))()  
+	end,
+ })
+
+local Button = Troll:CreateButton({
+	Name = "Hat Eater",
+	Callback = function()
+	    loadstring(game:HttpGet('https://pastebin.com/raw/zjHUHY7P'))()  
+	end,
+ })
+
+local Button = Troll:CreateButton({
+	Name = "Rizz",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/mikhailramlal/Rizzer/main/main"))()
+	end,
+ })
+
+local Button = Troll:CreateButton({
+	Name = "Headless",
+	Callback = function()
+		loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/jLn0n/scripts/main/misc/fe-headless.lua"))()
+	end,
+ })
+
+local Button = Troll:CreateButton({
+	Name = "Chat Bypass",
+	Callback = function()
+		_G.Keybind = 'Q' -- This is usually defaulted to Q. However, you can change to whatever you want.
+_G.Method = 1 -- 1 for the new method, 2 for the emoji method. If not defined, it will be defaulted to 1.
+loadstring(game:HttpGet("https://raw.githubusercontent.com/synnyyy/synergy/additional/betterbypasser",true))()
+	end,
+ })
+
+
+Rayfield:LoadConfiguration()
