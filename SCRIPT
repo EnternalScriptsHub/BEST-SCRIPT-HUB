@@ -204,14 +204,14 @@ local Button = Player:CreateButton({
 local Button = Player:CreateButton({
    Name = "Click To Teleport",
    Callback = function()
-     loadstring(game:HttpGet('https://pastebin.com/raw/3Wdmp9CD'))()
+     loadstring(game:HttpGet('https://pastebin.com/raw/g93KT04u'))()
    end,
 })
 
 local Button = Player:CreateButton({
    Name = "ESP Player",
    Callback = function()
-   loadstring(game:HttpGet("https://pastebin.com/raw/0vKxWzrs"))()
+   loadstring(game:HttpGet('https://pastebin.com/raw/g93KT04u'))()
    end,
 })
 
@@ -222,6 +222,15 @@ local Button = Player:CreateButton({
    end,
 })
 
+
+local Input = Tab:CreateInput({
+   Name = "Input Example",
+   PlaceholderText = "Input Placeholder",
+   RemoveTextAfterFocusLost = false,
+   Callback = function(s)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+   end,
+})
 
 local Slider = Player:CreateSlider({
    Name = "Walk Speed",
