@@ -383,6 +383,13 @@ local Button = Scripts:CreateButton({
 	   end,
 })
 
+local Button = Scripts:CreateButton({
+   Name = "PLS Donate",
+   Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/master/saints"))()
+	   end,
+})
+
 local Button = Troll:CreateButton({
 	Name = "Pencil",
 	Callback = function()
