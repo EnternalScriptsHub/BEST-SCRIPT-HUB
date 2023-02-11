@@ -211,7 +211,7 @@ local Button = Player:CreateButton({
 local Button = Player:CreateButton({
    Name = "ESP Player",
    Callback = function()
-   loadstring(game:HttpGet('https://pastebin.com/raw/g93KT04u'))()
+  loadstring(game:HttpGet("https://pastebin.com/raw/wMwN5Ygu", true))()
    end,
 })
 
