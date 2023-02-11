@@ -223,8 +223,8 @@ local Button = Player:CreateButton({
 })
 
 
-local Input = Tab:CreateInput({
-   Name = "Input Example",
+local Input = Player:CreateInput({
+   Name = "Walk Speed",
    PlaceholderText = "Input Placeholder",
    RemoveTextAfterFocusLost = false,
    Callback = function(s)
