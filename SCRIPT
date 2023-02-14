@@ -28,23 +28,20 @@ local Window = Rayfield:CreateWindow({
  local Tab = Window:CreateTab("Main")
  local Section = Tab:CreateSection("Main Section")
 
- local Player = Window:CreateTab("Player")
- local Section = Player:CreateSection("Player Section")
-
  local Troll = Window:CreateTab("Troll")
  local Section = Troll:CreateSection("Troll Section")
 
  local Scripts = Window:CreateTab("Game Scripts")
  local Section = Scripts:CreateSection("Game Section")
-
- local Animations = Window:CreateTab("Animations")
- local Section = Animations:CreateSection("Animations Section")
-
- local Settings = Window:CreateTab("Settings")
- local Section = Settings:CreateSection("Settings Section")
+ 
+  local Player = Window:CreateTab("Player")
+ local Section = Player:CreateSection("Player Section")
 
 local Credits = Window:CreateTab("Credits")
  local Section = Credits:CreateSection("Credits Section")
+ 
+ local Settings = Window:CreateTab("Settings")
+ local Section = Settings:CreateSection("Settings Section")
 
  -- Start Up Prompt
 Window:Prompt({
@@ -113,104 +110,46 @@ local Button = Tab:CreateButton({
    end,
 })
 
-local Button = Animations:CreateButton({
-	Name = "Flips",
-	Callback = function()
-Rayfield:Notify({
-   Title = "Keybinds",
-   Content = "Press Z for front flip, Press X for Backflip, and Press C for INF Jump",
-   Duration = 6.5,
-   Image = 4483362458,
-   Actions = { -- Notification Buttons
-      Ignore = {
-         Name = "Okay!",
-         Callback = function()
-         print("The user tapped Okay!")
-      end
-   },
-},
-})
-	   wait()
-
---[[ Info ]]--
-
-local ver = "2.00"
-local scriptname = "feFlip"
-
-
---[[ Keybinds ]]--
-
-local FrontflipKey = Enum.KeyCode.Z
-local BackflipKey = Enum.KeyCode.X
-local AirjumpKey = Enum.KeyCode.C
-
-
---[[ Dependencies ]]--
-
-local ca = game:GetService("ContextActionService")
-local zeezy = game:GetService("Players").LocalPlayer
-local h = 0.0174533
-local antigrav
-
-
---[[ Functions ]]--
-
-function zeezyFrontflip(act,inp,obj)
-	if inp == Enum.UserInputState.Begin then
-		zeezy.Character.Humanoid:ChangeState("Jumping")
-		wait()
-		zeezy.Character.Humanoid.Sit = true
-		for i = 1,360 do 
-			delay(i/720,function()
-			zeezy.Character.Humanoid.Sit = true
-				zeezy.Character.HumanoidRootPart.CFrame = zeezy.Character.HumanoidRootPart.CFrame * CFrame.Angles(-h,0,0)
-			end)
-		end
-		wait(0.55)
-		zeezy.Character.Humanoid.Sit = false
-	end
-end
-
-function zeezyBackflip(act,inp,obj)
-	if inp == Enum.UserInputState.Begin then
-		zeezy.Character.Humanoid:ChangeState("Jumping")
-		wait()
-		zeezy.Character.Humanoid.Sit = true
-		for i = 1,360 do
-			delay(i/720,function()
-			zeezy.Character.Humanoid.Sit = true
-				zeezy.Character.HumanoidRootPart.CFrame = zeezy.Character.HumanoidRootPart.CFrame * CFrame.Angles(h,0,0)
-			end)
-		end
-		wait(0.55)
-		zeezy.Character.Humanoid.Sit = false
-	end
-end
-
-function zeezyAirjump(act,inp,obj)
-	if inp == Enum.UserInputState.Begin then
-		zeezy.Character:FindFirstChildOfClass'Humanoid':ChangeState("Seated")
-		wait()
-		zeezy.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")	
-	end
-end
-
-
---[[ Binds ]]--
-
-ca:BindAction("zeezyFrontflip",zeezyFrontflip,false,FrontflipKey)
-ca:BindAction("zeezyBackflip",zeezyBackflip,false,BackflipKey)
-ca:BindAction("zeezyAirjump",zeezyAirjump,false,AirjumpKey)
-
-	end,
- })
-
 local Button = Settings:CreateButton({
 	Name = "Destroy Interface",
 	Callback = function()
 	   Rayfield:Destroy()   
 	end,
  })
+
+local Players = game:GetService("Players")
+local PlayList = {}
+for i,v in pairs(game:GetService("Players"):GetPlayers()) do 
+    if v ~= game.Players.LocalPlayer then 
+        table.insert(PlayList,v.Name)
+    end
+end
+ local playerDropdowns = Player:CreateDropdown({
+    Name = "Teleport To Player",
+    Options = PlayList,
+    CurrentOption = "Players",
+    Flag = "Dropdown1", 
+    Callback = function(Option)
+        players = game:GetService("Players")
+        targetPlayer = players:FindFirstChild(Option)
+        players.LocalPlayer.Character:MoveTo(targetPlayer.Character.HumanoidRootPart.Position)
+    end,
+ })
+ Players.PlayerAdded:Connect(function(player)
+    local name = player.Name
+    table.insert(PlayList,name)
+    playerDropdowns:Refresh(PlayList,name)
+end)
+
+Players.PlayerRemoving:Connect(function(player)
+    local name = player.Name
+    for i,v in pairs(PlayList)do
+        if v == name then  
+            table.remove(PlayList,i)
+            playerDropdowns:Refresh(PlayList,name)
+                end
+    end
+end)
 
 local Button = Player:CreateButton({
    Name = "Korblox",
@@ -256,6 +195,9 @@ local Input = Player:CreateInput({
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
    end,
 })
+
+
+
 
 local Slider = Player:CreateSlider({
    Name = "Walk Speed",
@@ -407,7 +349,7 @@ local Button = Scripts:CreateButton({
 local Button = Scripts:CreateButton({
    Name = "PLS Donate",
    Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/master/saints"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/73GG/Game-Scripts/main/Natural%20Disaster%20Survival.lua"))()
 	   end,
 })
 
@@ -443,6 +385,48 @@ local Button = Scripts:CreateButton({
    Name = "Flee the Facility",
    Callback = function()
        loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/V.G-Hub/main/V.Ghub'))()
+	   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Hoopz",
+   Callback = function()
+       loadstring(game:HttpGet('https://pastebin.com/raw/gcwx38w4'))()
+	   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Anime Adventure",
+   Callback = function()
+       loadstring(game:HttpGet('https://raw.githubusercontent.com/UltraStuff/scripts2/main/animeadventures'))()
+	   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "BIG Paintball",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/radjahfromdiscord/iNEXT/main/source"))()
+	   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Natural Disaster",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/73GG/Game-Scripts/main/Natural%20Disaster%20Survival.lua"))()
+	   end,
+})
+
+local Button = Scripts:CreateButton({
+   Name = "Floor Is Lava",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/lynthhub/main/815405518",true))()
+	   end,
+})
+
+local Button = Troll:CreateButton({
+   Name = "Fling",
+   Callback = function()
+       loadstring(game:HttpGet('https://pastebin.com/raw/r97d7dS0', true))()
 	   end,
 })
 
@@ -482,6 +466,8 @@ _G.Method = 1 -- 1 for the new method, 2 for the emoji method. If not defined, i
 loadstring(game:HttpGet("https://raw.githubusercontent.com/synnyyy/synergy/additional/betterbypasser",true))()
 	end,
  })
+ 
+ 
 
 
 Rayfield:LoadConfiguration()
