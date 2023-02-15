@@ -240,6 +240,13 @@ local Button = Player:CreateButton({
 })
 
 local Button = Scripts:CreateButton({
+   Name = "Bed Wars",
+   Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
+   end,
+})
+
+local Button = Scripts:CreateButton({
    Name = "Da Hood",
    Callback = function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Scrvpter/Pluto/Lua/Loader.Lua', true))()
