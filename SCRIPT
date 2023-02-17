@@ -151,19 +151,6 @@ Players.PlayerRemoving:Connect(function(player)
     end
 end)
 
-
-local Button = Player:CreateButton({
-   Name = "Respawn",
-   Callback = function()
-         game.Players.LocalPlayer.Character.Head:Destroy()
-if game.Players.LocalPlayer.Character.Humanoid.Health < 5 then 
-    local deathmanok = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").position
-    wait(1.5)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(deathmanok)
-end
-   end,
-})
-
 local Button = Player:CreateButton({
    Name = "Korblox",
    Callback = function()
@@ -277,6 +264,7 @@ local Button = Scripts:CreateButton({
 local Button = Scripts:CreateButton({
    Name = "Mega Mansion Tycoon",
    Callback = function()
+       game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
    end,
 })
 
